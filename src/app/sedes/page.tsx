@@ -11,7 +11,7 @@ export default function SedesPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Sedes"
-            title="Una red internacional de comunidades que comparten la misma misión"
+            title="Una misma llama, encendida en distintas ciudades"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra eros sit amet dui volutpat, in suscipit leo consequat."
           />
         </Reveal>

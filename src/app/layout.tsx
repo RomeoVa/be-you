@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   },
   description:
     "Plataforma web de Be you, una comunidad católica juvenil enfocada en los retiros espirituales Switch y Quest.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

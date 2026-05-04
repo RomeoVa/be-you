@@ -11,7 +11,7 @@ export default function GaleriaPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Multimedia"
-            title="Recuerdos, testimonios y momentos que reflejan la experiencia"
+            title="Recuerdos, testimonios y momentos"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. In tempor finibus semper."
           />
         </Reveal>

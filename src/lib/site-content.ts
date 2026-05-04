@@ -9,6 +9,26 @@ import {
   PlaySquare,
   Sparkles,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+export type ProgramTitleBadge =
+  | string
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+
+export type RetreatProgram = {
+  slug: string;
+  name: ProgramTitleBadge;
+  label: string;
+  description: string;
+  href: string;
+  icon: LucideIcon;
+};
 
 export const navigationLinks = [
   { href: "/", label: "Inicio" },
@@ -19,9 +39,16 @@ export const navigationLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-export const retreatPrograms = [
+export const retreatPrograms: RetreatProgram[] = [
   {
-    name: "Switch",
+    slug: "switch",
+    name: {
+      type: "image",
+      src: "/logos/switch-logo.webp",
+      alt: "Switch by BeYou logo",
+      width: 180,
+      height: 55,
+    },
     label: "Parte 1",
     description:
       "El retiro Switch es el inicio de un camino espiritual para jóvenes entre 18 y 32 años. Este camino comienza con un fin de semana, para que de manera intensa se inicie este recorrido. Es un conjunto de pláticas, meditaciones, actividades y dinámicas que buscan conducir al caminante hacia la experiencia de ser hijo amadísimo de Dios, y también ayudar a descubrir la misión particular a la que cada joven ha sido llamado por Dios en este mundo.",
@@ -29,19 +56,26 @@ export const retreatPrograms = [
     icon: Sparkles,
   },
   {
-    name: "Quest",
+    slug: "quest",
+    name: {
+      type: "image",
+      src: "/logos/quest-logo.webp",
+      alt: "Quest by BeYou logo",
+      width: 157,
+      height: 64,
+    },
     label: "Parte 2",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, ligula et faucibus facilisis, purus urna faucibus ipsum, non posuere erat arcu eget justo.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, ligula et faucibus facilisis, purus urna faucibus ipsum, non posuere erat arcu eget justo.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, ligula et faucibus facilisis, purus urna faucibus ipsum, non posuere erat arcu eget justo.",
     href: "/contacto",
     icon: Compass,
   },
 ];
 
 export const stats = [
-  { value: "7", label: "Sedes activas" },
-  { value: "2", label: "Experiencias principales" },
-  { value: "100%", label: "Espacios pensados para jóvenes" },
+  { value: "9", label: "Sedes activas" },
+  { value: "+50", label: "Retiros" },
+  { value: "+2,000", label: "Jóvenes" },
 ];
 
 export const values = [
@@ -135,12 +169,12 @@ export const campuses = [
 ];
 
 export const galleryItems = [
-  { title: "Momento de oración", type: "image", icon: ImageIcon },
-  { title: "Testimonio en retiro", type: "video", icon: PlaySquare },
-  { title: "Dinámica comunitaria", type: "image", icon: ImageIcon },
+  { title: "Switch", type: "image", icon: ImageIcon },
+  { title: "Noches Be you", type: "video", icon: PlaySquare },
+  { title: "Quest", type: "image", icon: ImageIcon },
   { title: "Adoración y música", type: "video", icon: PlaySquare },
   { title: "Servicio en equipo", type: "image", icon: ImageIcon },
-  { title: "Resumen de jornada", type: "video", icon: PlaySquare },
+  { title: "Hikes", type: "video", icon: PlaySquare },
 ];
 
 export const resources = [

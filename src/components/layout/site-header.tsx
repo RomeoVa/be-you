@@ -3,6 +3,7 @@
 import { navigationLinks } from "@/lib/site-content";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -15,10 +16,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/88 backdrop-blur-xl">
       <Container>
-        <div className="flex h-18 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-primary/12 text-brand-primary shadow-soft">
-              <span className="font-serif-display text-lg font-semibold">BY</span>
+            <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-soft">
+              <Image
+                src="/logos/beyou-logo.webp"
+                alt="Be you logo"
+                fill
+                unoptimized
+                className="object-cover"
+              />
             </div>
             <div>
               <p className="font-serif-display text-xl leading-none text-brand-deep">Be you</p>

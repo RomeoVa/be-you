@@ -2,8 +2,9 @@ import { Container } from "@/components/ui/container";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { retreatPrograms, stats, values } from "@/lib/site-content";
+import { retreatPrograms, stats } from "@/lib/site-content";
 import { ArrowRight, CalendarDays, ImageIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -55,7 +56,7 @@ export default function HomePage() {
 
             <Reveal delay={0.08}>
               <MediaPlaceholder
-                label="[Banner]"
+                label="[Banner (video o imagenes)]"
                 icon={CalendarDays}
                 ratio="banner"
                 className="rounded-[2.25rem] border-white shadow-[0_30px_80px_rgba(58,50,122,0.12)]"
@@ -71,14 +72,14 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Retiros"
                 title="Switch y Quest forman parte del camino espiritual de Be you"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus nisi at mauris venenatis, vitae ullamcorper magna faucibus."
+                description=""
               />
           </Reveal>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {retreatPrograms.map((program, index) => (
-              <Reveal key={program.name} delay={index * 0.08}>
-                <article className="group h-full rounded-[2rem] border border-slate-200 bg-white p-7 shadow-soft transition-transform hover:-translate-y-1">
+              <Reveal key={program.slug} delay={index * 0.08}>
+                <article className="group h-full rounded-4xl border border-slate-200 bg-white p-7 shadow-soft transition-transform hover:-translate-y-1">
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-secondary/10 text-brand-secondary">
                       <program.icon className="h-7 w-7" strokeWidth={1.7} />
@@ -87,7 +88,19 @@ export default function HomePage() {
                       {program.label}
                     </span>
                   </div>
-                  <h3 className="mt-8 font-serif-display text-4xl text-brand-deep">{program.name}</h3>
+                  {typeof program.name === "string" ? (
+                    <h3 className="mt-8 font-serif-display text-4xl text-brand-deep">{program.name}</h3>
+                  ) : (
+                    <div className="mt-8 flex h-16 w-full max-w-60 items-center">
+                      <Image
+                        src={program.name.src}
+                        alt={program.name.alt}
+                        width={program.name.width}
+                        height={program.name.height}
+                        className="h-full w-full object-contain object-left"
+                      />
+                    </div>
+                  )}
                   <p className="mt-4 text-base leading-8 text-slate-600">{program.description}</p>
                   <Link
                     href={program.href}
@@ -105,28 +118,39 @@ export default function HomePage() {
 
       <section className="pt-24">
         <Container>
-          <div className="grid gap-8 rounded-[2rem] bg-slate-50 px-6 py-10 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
+          <div className="grid items-center gap-8 rounded-4xl bg-slate-50 px-6 py-10 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
+            <Reveal delay={0.08}>
+              <div className="max-w-xl">
+                <SectionHeading
+                  eyebrow="Sobre Nosotros"
+                  title="Conoce el corazón de Be you y la misión que impulsa cada retiro"
+                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum turpis ut erat molestie, eget efficitur nisl posuere. Descubre la historia, visión y propósito de esta comunidad juvenil."
+                />
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href="/nosotros"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-deep px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
+                  >
+                    Ir a Sobre Nosotros
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/contacto"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-deep transition-colors hover:border-brand-secondary hover:text-brand-secondary"
+                  >
+                    Únete a la comunidad
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
             <Reveal>
-              <SectionHeading
-                eyebrow="Comunidad"
-                title="Una presencia cercana, serena y profundamente humana"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum turpis ut erat molestie, eget efficitur nisl posuere."
+              <MediaPlaceholder
+                label="[Imagen]"
+                icon={ImageIcon}
+                ratio="banner"
+                className="rounded-[2rem] border-white shadow-soft"
               />
             </Reveal>
-
-            <div className="grid gap-5 sm:grid-cols-3">
-              {values.map((value, index) => (
-                <Reveal key={value.title} delay={index * 0.08}>
-                  <article className="rounded-[1.75rem] bg-white p-6 shadow-soft">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-deep/8 text-brand-deep">
-                      <value.icon className="h-6 w-6" strokeWidth={1.6} />
-                    </div>
-                    <h3 className="mt-5 text-xl font-semibold text-brand-deep">{value.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">{value.description}</p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </Container>
       </section>
