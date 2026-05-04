@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ScrollToTop } from "@/components/layout/scroll-to-top";
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="es" className="scroll-smooth">
       <body className="bg-white text-slate-900 antialiased">
         <div className="relative flex min-h-screen flex-col">
+          <ScrollToTop />
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
