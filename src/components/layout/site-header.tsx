@@ -30,7 +30,7 @@ export function SiteHeader() {
             <div>
               <p className="font-serif-display text-xl leading-none text-brand-deep">Be you</p>
               <p className="mt-1 text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">
-                By Regnum Cristi
+                By Regnum Christi
               </p>
             </div>
           </Link>
