@@ -23,6 +23,7 @@ export function SiteHeader() {
                 src="/logos/beyou-logo.webp"
                 alt="Be you logo"
                 fill
+                loading="eager"
                 unoptimized
                 className="object-cover"
               />

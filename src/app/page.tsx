@@ -91,13 +91,13 @@ export default function HomePage() {
                   {typeof program.name === "string" ? (
                     <h3 className="mt-8 font-serif-display text-4xl text-brand-deep">{program.name}</h3>
                   ) : (
-                    <div className="mt-8 flex h-16 w-full max-w-60 items-center">
+                    <div className="relative mt-8 h-16 w-full max-w-60">
                       <Image
                         src={program.name.src}
                         alt={program.name.alt}
-                        width={program.name.width}
-                        height={program.name.height}
-                        className="h-full w-full object-contain object-left"
+                        fill
+                        sizes="240px"
+                        className="object-contain object-left"
                       />
                     </div>
                   )}

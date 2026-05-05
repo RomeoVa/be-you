@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Be you",
   },
   description:
-    "Plataforma web de Be you, una comunidad católica juvenil enfocada en los retiros espirituales Switch y Quest.",
+    "Be you, comunidad de jóvenes que se ayudan mutuamente a seguir a Cristo, y se proponen predicar el Evangelio a sus amigos a través de la coherencia cristiana y, cuando sea necesario, también con palabras.",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth">
       <body className="bg-white text-slate-900 antialiased">
         <div className="relative flex min-h-screen flex-col">
           <ScrollToTop />
