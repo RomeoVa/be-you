@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { campuses } from "@/lib/site-content";
-import { MapPin } from "lucide-react";
+import { Mail, MapPin, Phone, UserRound } from "lucide-react";
 
 export default function SedesPage() {
   return (
@@ -29,7 +29,29 @@ export default function SedesPage() {
                     <p className="text-sm text-slate-500">{campus.country}</p>
                   </div>
                 </div>
-                <p className="mt-5 text-sm leading-7 text-slate-600">{campus.blurb}</p>
+                <div className="mt-5 space-y-3 rounded-[1.4rem] bg-slate-50 p-4">
+                  <div className="flex items-start gap-3 text-sm text-slate-700">
+                    <UserRound className="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                        Responsable
+                      </p>
+                      <p className="mt-1 font-medium">{campus.contact.name}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 text-sm text-slate-700">
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" />
+                    <a href={`mailto:${campus.contact.email}`} className="transition-colors hover:text-brand-primary">
+                      {campus.contact.email}
+                    </a>
+                  </div>
+                  <div className="flex items-start gap-3 text-sm text-slate-700">
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" />
+                    <a href={`tel:${campus.contact.phone.replace(/\s+/g, "")}`} className="transition-colors hover:text-brand-primary">
+                      {campus.contact.phone}
+                    </a>
+                  </div>
+                </div>
               </article>
             </Reveal>
           ))}

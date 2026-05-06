@@ -1,7 +1,9 @@
 import { Container } from "@/components/ui/container";
+import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { values } from "@/lib/site-content";
+import { ImageIcon } from "lucide-react";
 
 export default function NosotrosPage() {
   return (
@@ -17,19 +19,12 @@ export default function NosotrosPage() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
-            <article className="rounded-4xl border border-slate-200 bg-white p-8 shadow-soft">
-              <h2 className="font-serif-display text-3xl text-brand-deep">Nuestra historia</h2>
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet erat vitae
-                nibh malesuada, ac ultricies neque tincidunt. Suspendisse ac ante vel leo
-                ullamcorper luctus.
-              </p>
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet erat vitae
-                nibh malesuada, ac ultricies neque tincidunt. Suspendisse ac ante vel leo
-                ullamcorper luctus.
-              </p>
-            </article>
+            <MediaPlaceholder
+              label="[Imagen]"
+              icon={ImageIcon}
+              ratio="banner"
+              className="rounded-4xl border-white shadow-soft"
+            />
           </Reveal>
 
           <Reveal delay={0.08}>

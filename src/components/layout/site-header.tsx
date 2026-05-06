@@ -6,31 +6,64 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "../ui/container";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [isOnHero, setIsOnHero] = useState(pathname === "/");
+
+  useEffect(() => {
+    const updateHeaderState = () => {
+      if (pathname !== "/") {
+        setIsOnHero(false);
+        return;
+      }
+
+      setIsOnHero(window.scrollY < window.innerHeight * 0.7);
+    };
+
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
+
+    return () => {
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
+    };
+  }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/88 backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        isOnHero
+          ? "border-b border-white/12 bg-white/8 backdrop-blur-2xl"
+          : "border-b border-slate-200/80 bg-white/88 backdrop-blur-xl"
+      }`}
+    >
       <Container>
         <div className="flex h-20 items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-            <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-soft">
+            <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden bg-transparent">
               <Image
-                src="/logos/beyou-logo.webp"
+                src="/logos/beyou-log-trans.webp"
                 alt="Be you logo"
                 fill
                 loading="eager"
                 unoptimized
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div>
-              <p className="font-serif-display text-xl leading-none text-brand-deep">Be you</p>
-              <p className="mt-1 text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">
+              <p className={`font-serif-display text-xl leading-none ${isOnHero ? "text-white" : "text-brand-deep"}`}>
+                Be you
+              </p>
+              <p
+                className={`mt-1 text-[0.65rem] uppercase tracking-[0.28em] ${
+                  isOnHero ? "text-white/72" : "text-slate-500"
+                }`}
+              >
                 By Regnum Christi
               </p>
             </div>
@@ -47,7 +80,9 @@ export function SiteHeader() {
                   className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-brand-primary text-white"
-                      : "text-slate-600 hover:bg-brand-secondary/10 hover:text-brand-secondary"
+                      : isOnHero
+                        ? "text-white/82 hover:bg-white/12 hover:text-white"
+                        : "text-slate-600 hover:bg-brand-secondary/10 hover:text-brand-secondary"
                   }`}
                 >
                   {link.label}
@@ -66,7 +101,11 @@ export function SiteHeader() {
             <button
               type="button"
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-700 md:hidden"
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden ${
+                isOnHero
+                  ? "border border-white/22 bg-white/10 text-white backdrop-blur-sm"
+                  : "border border-slate-200 text-slate-700"
+              }`}
               onClick={() => setOpen((value) => !value)}
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

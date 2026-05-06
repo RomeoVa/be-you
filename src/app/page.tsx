@@ -3,25 +3,40 @@ import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { retreatPrograms, stats } from "@/lib/site-content";
-import { ArrowRight, ImageIcon } from "lucide-react";
+import { ArrowRight, CalendarDays, ImageIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <div className="pb-20">
-      <section className="relative overflow-hidden pt-10 sm:pt-14">
-        <div className="absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(circle_at_top,rgba(218,98,62,0.12),transparent_48%),radial-gradient(circle_at_75%_20%,rgba(89,121,164,0.10),transparent_32%)]" />
-        <Container className="relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <section className="relative -mt-20 overflow-hidden pt-20">
+        <div className="absolute inset-0">
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src="/videos/video-beyou-switch.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.78)_0%,rgba(15,23,42,0.58)_36%,rgba(15,23,42,0.26)_62%,rgba(15,23,42,0.55)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(218,98,62,0.28),transparent_30%),radial-gradient(circle_at_72%_18%,rgba(89,121,164,0.24),transparent_24%)]" />
+        </div>
+
+        <Container className="relative z-10">
+          <div className="flex min-h-[calc(100svh-5rem)] items-center py-10 sm:py-16">
             <Reveal className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-secondary">
                 Sé auténtico | Ve contracorriente
               </p>
-              <h1 className="mt-6 text-balance font-serif-display text-5xl leading-none text-brand-deep sm:text-6xl lg:text-7xl">
+              <h1 className="mt-6 text-balance font-serif-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
                 Si eres lo que tienes que ser, prenderás fuego al mundo.
               </h1>
-              <p className="mt-6 max-w-xl text-pretty text-base leading-8 text-slate-600 sm:text-lg">
+              <p className="mt-6 max-w-xl text-pretty text-base leading-8 text-white/82 sm:text-lg">
                 Una comunidad de jóvenes
                 que se ayudan mutuamente a seguir a
                 Cristo, y se proponen predicar el
@@ -39,37 +54,44 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/nosotros"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-deep transition-colors hover:border-brand-secondary hover:text-brand-secondary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/50 hover:bg-white/16"
                 >
                   Conoce la misión
                 </Link>
               </div>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              <div className="hidden lg:grid mt-10 gap-4 sm:grid-cols-3">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-3xl border border-slate-200 bg-white/90 p-5">
-                    <p className="text-3xl font-semibold text-brand-primary">{stat.value}</p>
-                    <p className="mt-2 text-sm text-slate-600">{stat.label}</p>
+                  <div
+                    key={stat.label}
+                    className="rounded-3xl border border-white/20 bg-white/10 p-5 backdrop-blur-md"
+                  >
+                    <p className="text-3xl font-semibold text-white">{stat.value}</p>
+                    <p className="mt-2 text-sm text-white/72">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </Reveal>
-
-            <Reveal delay={0.08}>
-              <div className="overflow-hidden rounded-2xl border border-white bg-slate-100 shadow-[0_30px_80px_rgba(58,50,122,0.12)]">
-                <video
-                  className="aspect-video h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                >
-                  <source src="/videos/video-beyou-switch.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </Reveal>
           </div>
+        </Container>
+      </section>
+
+      <section className="relative z-10 mt-8 lg:hidden">
+        <Container>
+          <Reveal>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft lg:border-white/20 lg:bg-white/10 lg:backdrop-blur-md"
+                >
+                  <p className="text-3xl font-semibold text-brand-primary lg:text-white">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-sm text-slate-600 lg:text-white/72">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -151,12 +173,15 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal>
-              <MediaPlaceholder
-                label="[Imagen]"
-                icon={ImageIcon}
-                ratio="banner"
-                className="rounded-[2rem] border-white shadow-soft"
-              />
+              <div className="relative aspect-video overflow-hidden rounded-4xl border border-white shadow-soft">
+                <Image
+                  src="/inicio/cruz-inicio.webp"
+                  alt="Cruz de Be you"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
           </div>
         </Container>
@@ -166,7 +191,15 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <Reveal>
-              <MediaPlaceholder label="[Imagen]" icon={ImageIcon} ratio="banner" />
+              <div className="relative aspect-video overflow-hidden rounded-4xl border border-white shadow-soft">
+                <Image
+                  src="/inicio/switch-retiro.webp"
+                  alt="Retiro Switch"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
             <Reveal delay={0.08}>
               <div className="max-w-xl">

@@ -115,56 +115,83 @@ export const campuses = [
   {
     name: "CDMX Poniente",
     country: "México",
-    blurb:
-      "Sede ubicada en la zona poniente de la Ciudad de México, brindando una comunidad activa y cercana para los jóvenes.",
+    contact: {
+      name: "Responsable de sede",
+      email: "poniente@beyou.org",
+      phone: "+52 000 000 0001",
+    },
   },
   {
     name: "CDMX Norte",
     country: "México",
-    blurb:
-      "Sede en la zona norte de Ciudad de México, enfocada en el acompañamiento espiritual y la formación de jóvenes.",
+    contact: {
+      name: "Responsable de sede",
+      email: "norte@beyou.org",
+      phone: "+52 000 000 0002",
+    },
   },
   {
     name: "Querétaro",
     country: "México",
-    blurb:
-      "Sede en Querétaro, un espacio para la vivencia de experiencias profundas y auténticas en comunidad.",
+    contact: {
+      name: "Responsable de sede",
+      email: "queretaro@beyou.org",
+      phone: "+52 000 000 0003",
+    },
   },
   {
     name: "León",
     country: "México",
-    blurb:
-      "Sede en la ciudad de León, comprometida con el crecimiento personal y espiritual de los jóvenes.",
+    contact: {
+      name: "Responsable de sede",
+      email: "leon@beyou.org",
+      phone: "+52 000 000 0004",
+    },
   },
   {
     name: "Guadalajara",
     country: "México",
-    blurb:
-      "Sede en Guadalajara que impulsa el desarrollo de la fe y la vivencia comunitaria.",
+    contact: {
+      name: "Responsable de sede",
+      email: "guadalajara@beyou.org",
+      phone: "+52 000 000 0005",
+    },
   },
   {
     name: "Puebla",
     country: "México",
-    blurb:
-      "Sede en Puebla, facilitando encuentros y retiros para fomentar valores y sentido de pertenencia.",
+    contact: {
+      name: "Responsable de sede",
+      email: "puebla@beyou.org",
+      phone: "+52 000 000 0006",
+    },
   },
   {
     name: "Cancún",
     country: "México",
-    blurb:
-      "Sede en Cancún, un lugar de encuentro para jóvenes que buscan crecer juntos en comunidad.",
+    contact: {
+      name: "Responsable de sede",
+      email: "cancun@beyou.org",
+      phone: "+52 000 000 0007",
+    },
   },
   {
     name: "Mérida",
     country: "México",
-    blurb:
-      "Sede en Mérida, enfocada en acompañar a los jóvenes en su camino espiritual.",
+    contact: {
+      name: "Responsable de sede",
+      email: "merida@beyou.org",
+      phone: "+52 000 000 0008",
+    },
   },
   {
     name: "Madrid",
     country: "España",
-    blurb:
-      "Sede en Madrid, extendiendo la misión y la experiencia de comunidad más allá de México.",
+    contact: {
+      name: "Responsable de sede",
+      email: "madrid@beyou.org",
+      phone: "+34 000 000 000",
+    },
   },
 ];
 
