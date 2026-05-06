@@ -28,7 +28,7 @@ export default function HomePage() {
         </div>
 
         <Container className="relative z-10">
-          <div className="flex min-h-[calc(100svh-5rem)] items-center py-10 sm:py-16">
+          <div className="flex min-h-[calc(100svh-5rem)] items-start py-10 sm:py-16 lg:items-center">
             <Reveal className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-secondary">
                 Sé auténtico | Ve contracorriente

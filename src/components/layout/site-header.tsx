@@ -13,6 +13,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [isOnHero, setIsOnHero] = useState(pathname === "/");
+  const useHeroStyle = isOnHero && !open;
 
   useEffect(() => {
     const updateHeaderState = () => {
@@ -37,7 +38,7 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
-        isOnHero
+        useHeroStyle
           ? "border-b border-white/12 bg-white/8 backdrop-blur-2xl"
           : "border-b border-slate-200/80 bg-white/88 backdrop-blur-xl"
       }`}
@@ -56,12 +57,16 @@ export function SiteHeader() {
               />
             </div>
             <div>
-              <p className={`font-serif-display text-xl leading-none ${isOnHero ? "text-white" : "text-brand-deep"}`}>
+              <p
+                className={`font-serif-display text-xl leading-none ${
+                  useHeroStyle ? "text-white" : "text-brand-deep"
+                }`}
+              >
                 Be you
               </p>
               <p
                 className={`mt-1 text-[0.65rem] uppercase tracking-[0.28em] ${
-                  isOnHero ? "text-white/72" : "text-slate-500"
+                  useHeroStyle ? "text-white/72" : "text-slate-500"
                 }`}
               >
                 By Regnum Christi
@@ -80,7 +85,7 @@ export function SiteHeader() {
                   className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-brand-primary text-white"
-                      : isOnHero
+                      : useHeroStyle
                         ? "text-white/82 hover:bg-white/12 hover:text-white"
                         : "text-slate-600 hover:bg-brand-secondary/10 hover:text-brand-secondary"
                   }`}
@@ -102,7 +107,7 @@ export function SiteHeader() {
               type="button"
               aria-label={open ? "Cerrar menú" : "Abrir menú"}
               className={`inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden ${
-                isOnHero
+                useHeroStyle
                   ? "border border-white/22 bg-white/10 text-white backdrop-blur-sm"
                   : "border border-slate-200 text-slate-700"
               }`}
