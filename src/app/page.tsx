@@ -3,7 +3,7 @@ import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { retreatPrograms, stats } from "@/lib/site-content";
-import { ArrowRight, CalendarDays, ImageIcon } from "lucide-react";
+import { ArrowRight, ImageIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -55,12 +55,19 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <MediaPlaceholder
-                label="[Banner (video o imagenes)]"
-                icon={CalendarDays}
-                ratio="banner"
-                className="rounded-[2.25rem] border-white shadow-[0_30px_80px_rgba(58,50,122,0.12)]"
-              />
+              <div className="overflow-hidden rounded-2xl border border-white bg-slate-100 shadow-[0_30px_80px_rgba(58,50,122,0.12)]">
+                <video
+                  className="aspect-video h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src="/videos/video-beyou-switch.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </Reveal>
           </div>
         </Container>
