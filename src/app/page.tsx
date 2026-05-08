@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { heroVideoUrl } from "@/lib/site-config";
 import { retreatPrograms, stats } from "@/lib/site-content";
 import { ArrowRight, CalendarDays, ImageIcon } from "lucide-react";
 import Image from "next/image";
@@ -12,17 +13,21 @@ export default function HomePage() {
     <div className="pb-20">
       <section className="relative -mt-20 overflow-hidden pt-20">
         <div className="absolute inset-0">
-          <video
-            className="h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          >
-            <source src="/videos/video-beyou-switch.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {heroVideoUrl ? (
+            <video
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={heroVideoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <div className="h-full w-full bg-[linear-gradient(135deg,#3a327a_0%,#5979a4_42%,#da623e_100%)]" />
+          )}
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.78)_0%,rgba(15,23,42,0.58)_36%,rgba(15,23,42,0.26)_62%,rgba(15,23,42,0.55)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(218,98,62,0.28),transparent_30%),radial-gradient(circle_at_72%_18%,rgba(89,121,164,0.24),transparent_24%)]" />
         </div>
